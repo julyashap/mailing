@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     'mailing',
 
     'django_apscheduler',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -101,3 +103,6 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 
 APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
