@@ -1,0 +1,12 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+    <div class="row d-flex justify-content-center align-items-center text-center">
+        <div class="col-md-4">
+            <h2>{{ object.last_name }} {{ object.first_name }} {{ object.patronymic }}</h2>
+            {% if object.comment %}
+            <p style="padding-top: 20px">{{ object.comment }}</p>
+            {% endif %}
+            <h5 style="padding-top: 20px">Email: {{ object.email }}</h5>
+        </div>
+    </div>
+{% endblock %}

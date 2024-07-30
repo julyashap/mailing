@@ -1,0 +1,42 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<div class="mb-5 d-flex justify-content-center align-items-center">
+    <a class="btn btn-primary" href="{% url 'mailing:create_newsletter' %}">Добавить рассылку</a>
+</div>
+<div class="row text-center">
+    {% for object in object_list %}
+    <div class="col-6">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ object.pk }}</h4>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Первая отправка</th>
+                        <th scope="col">Последняя отправка</th>
+                        <th scope="col">Статус</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ object.first_sending }}</td>
+                        <td>{{ object.last_sending }}</td>
+                        <td>{{ object.get_status_display }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="btn-group" role="group">
+                    <a class="btn btn-outline-primary"
+                       href="{% url 'mailing:detail_newsletter' object.pk %}">Посмотреть</a>
+                    <a class="btn btn-outline-primary"
+                       href="{% url 'mailing:update_newsletter' object.pk %}">Редактировать</a>
+                    <a class="btn btn-outline-primary" href="{% url 'mailing:delete_newsletter' object.pk %}">Удалить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

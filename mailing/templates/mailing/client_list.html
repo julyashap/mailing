@@ -1,0 +1,27 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<div class="mb-5 d-flex justify-content-center align-items-center">
+    <a class="btn btn-primary" href="{% url 'mailing:create_client' %}">Добавить клиента</a>
+</div>
+<div class="row text-center">
+    {% for object in object_list %}
+    <div class="col-4">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ object.last_name }} {{ object.first_name.0 }}.
+                    {{ object.patronymic.0 }}.</h4>
+            </div>
+            <div class="card-body">
+                <h5>{{ object.email }}</h5>
+                <div class="btn-group" role="group">
+                    <a class="btn btn-outline-primary" href="{% url 'mailing:detail_client' object.pk %}">Посмотреть</a>
+                    <a class="btn btn-outline-primary"
+                       href="{% url 'mailing:update_client' object.pk %}">Редактировать</a>
+                    <a class="btn btn-outline-primary" href="{% url 'mailing:delete_client' object.pk %}">Удалить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

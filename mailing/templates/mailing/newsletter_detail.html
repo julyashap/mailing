@@ -1,0 +1,23 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<div class="row d-flex justify-content-center align-items-center text-center">
+    <div class="col-md-4">
+        <h2>Номер рассылки: {{ object.pk }}</h2>
+
+        <h5 style="padding-top: 35px">Первая отправка:
+            <span class="text-primary">{{ object.first_sending }}</span></h5>
+        <h5>Последняя отправка: <span class="text-primary">{{ object.last_sending }}</span></h5>
+        <h5>Периодичность отправки:
+            <span class="text-primary">{{ object.get_periodicity_display }}</span></h5>
+        <h5>Статус рассылки: <span class="text-primary">{{ object.get_status_display }}</span></h5>
+
+        <p style="padding-top: 35px"><span style="font-weight: 500">Список клиентов:</span></p>
+        <ul style="list-style-type: none">
+            {% for client in object.clients.all %}
+            <li>{{ client }}</li>
+            {% endfor %}
+        </ul>
+        <p><span style="font-weight: 500">Сообщение:</span> {{ object.message.body }}</p>
+    </div>
+</div>
+{% endblock %}
