@@ -1,0 +1,24 @@
+{% extends "mailing/base.html" %}
+{% block content %}
+<div class="row text-center">
+    {% for object in object_list %}
+    {% if object != user and object.is_superuser == False and object.is_staff == False %}
+    <div class="col-4">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ object.pk }}</h4>
+            </div>
+            <div class="card-body">
+                <h5>{{ object.email }}</h5>
+                {% if object.is_active %}
+                <a class="btn btn-outline-danger" href="{% url 'users:user_block' object.pk %}">Блокировать</a>
+                {% else %}
+                <a class="btn btn-outline-primary" href="{% url 'users:user_unblock' object.pk %}">Разблокировать</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
