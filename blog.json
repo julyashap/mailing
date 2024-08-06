@@ -1,0 +1,46 @@
+[
+  {
+    "model": "blog.blog",
+    "pk": 1,
+    "fields": {
+      "title": "Как можно управлять рассылками?",
+      "body": "Да легко!",
+      "picture": "",
+      "count_views": 9,
+      "published_at": "2024-08-05T23:39:04Z"
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 2,
+    "fields": {
+      "title": "Как создать рассылку?",
+      "body": "Нажмите на кнопку \"Добавить рассылку\"!",
+      "picture": "",
+      "count_views": 0,
+      "published_at": "2024-08-05T23:39:35Z"
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 3,
+    "fields": {
+      "title": "Что делать, если нет клиентов?",
+      "body": "Набирайте! XD",
+      "picture": "",
+      "count_views": 1,
+      "published_at": "2024-08-05T23:39:54Z"
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 4,
+    "fields": {
+      "title": "ПП - это?",
+      "body": "Продвинутое программирование :*",
+      "picture": "",
+      "count_views": 1,
+      "published_at": "2024-08-05T23:40:24Z"
+    }
+  }
+]

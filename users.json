@@ -1,0 +1,116 @@
+[
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$Q2tZUjy2FGSReZuzKm17WH$f1uDOuoe6rclFTMCl30welCRfDg6mu2D7D9aYJ1nmqw=",
+      "last_login": "2024-08-05T22:32:30.376Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-08-05T19:08:10.788Z",
+      "email": "shapaeva03@mail.ru",
+      "avatar": "",
+      "phone": null,
+      "country": null,
+      "token": "0b40205a239e9581",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$8qRQ1b51EoycOvJgpv1gj1$0z/sJU6nxVD/LCQNCM2mIk1peQ74AGDwZyh3l4Cmrqc=",
+      "last_login": "2024-08-05T23:35:29.335Z",
+      "is_superuser": true,
+      "first_name": "Julya",
+      "last_name": "Shapaeva",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-08-05T19:08:58.729Z",
+      "email": "admin@admin.ru",
+      "avatar": "",
+      "phone": null,
+      "country": null,
+      "token": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$rxwMgOby3riC7xtJlcZM86$TBtSMxjzzDXntZm1dvXtvP/YrgW9Jr1sdc6M1TieEfs=",
+      "last_login": "2024-08-05T22:43:08.057Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-08-05T21:19:02Z",
+      "email": "manager1@manager.ru",
+      "avatar": "",
+      "phone": null,
+      "country": null,
+      "token": null,
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$DyB8zwxIBthpmoTQIEq3tD$UJ56kQvxWrqcXfE77DVT/YiWjcMO0DVlX4xfZfru6JI=",
+      "last_login": "2024-08-05T22:51:44.661Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-08-05T21:19:38Z",
+      "email": "manager2@manager.ru",
+      "avatar": "",
+      "phone": null,
+      "country": null,
+      "token": null,
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$gVCbZAroizDpOD1vukWkfE$6msHKwFEa7DZknjieSdCD4waAuq7DqZ9WUSVMj4hkT0=",
+      "last_login": "2024-08-05T23:37:59.009Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-08-05T23:36:44Z",
+      "email": "content@manager.com",
+      "avatar": "",
+      "phone": null,
+      "country": null,
+      "token": null,
+      "groups": [],
+      "user_permissions": [
+        52,
+        53,
+        54,
+        55
+      ]
+    }
+  }
+]

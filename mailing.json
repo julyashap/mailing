@@ -1,0 +1,100 @@
+[
+  {
+    "model": "mailing.client",
+    "pk": 1,
+    "fields": {
+      "email": "shapa@shapa.ru",
+      "first_name": "Юлька",
+      "last_name": "Шапайкина",
+      "patronymic": "Александровкина",
+      "comment": "Лол",
+      "user": null
+    }
+  },
+  {
+    "model": "mailing.client",
+    "pk": 2,
+    "fields": {
+      "email": "shap@shap.ru",
+      "first_name": "Юлия",
+      "last_name": "Шапаева",
+      "patronymic": "Александровна",
+      "comment": "Кек",
+      "user": null
+    }
+  },
+  {
+    "model": "mailing.client",
+    "pk": 3,
+    "fields": {
+      "email": "shapaeva03@mail.ru",
+      "first_name": "Юл",
+      "last_name": "Шап",
+      "patronymic": "Алекс",
+      "comment": "Чебур",
+      "user": null
+    }
+  },
+  {
+    "model": "mailing.client",
+    "pk": 4,
+    "fields": {
+      "email": "1@1.ru",
+      "first_name": "1",
+      "last_name": "1",
+      "patronymic": "1",
+      "comment": "",
+      "user": 5
+    }
+  },
+  {
+    "model": "mailing.message",
+    "pk": 1,
+    "fields": {
+      "title": "Кеккк",
+      "body": "Лолллл",
+      "user": null
+    }
+  },
+  {
+    "model": "mailing.message",
+    "pk": 2,
+    "fields": {
+      "title": "1",
+      "body": "1",
+      "user": 5
+    }
+  },
+  {
+    "model": "mailing.newsletter",
+    "pk": 6,
+    "fields": {
+      "first_sending": "2024-08-04T11:58:00Z",
+      "last_sending": "2024-08-05T11:58:00Z",
+      "periodicity": "daily",
+      "status": "launched",
+      "is_active": true,
+      "message": 1,
+      "user": null,
+      "clients": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "mailing.newsletter",
+    "pk": 7,
+    "fields": {
+      "first_sending": "2024-06-07T22:08:00Z",
+      "last_sending": "2024-07-07T22:08:00Z",
+      "periodicity": "daily",
+      "status": "created",
+      "is_active": true,
+      "message": 2,
+      "user": 5,
+      "clients": [
+        4
+      ]
+    }
+  }
+]

@@ -1,0 +1,11 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+<div class="col-12">
+    <div class="row d-flex justify-content-center align-items-center text-center">
+        <div class="col-12">
+            <h5 class="card-title">Отлично! Верификация пройдена!</h5>
+            <a style="margin-top: 15px" class="btn btn-outline-primary" href="{% url 'users:login' %}">Войти</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
