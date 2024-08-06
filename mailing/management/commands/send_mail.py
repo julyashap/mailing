@@ -1,11 +1,8 @@
 from django.core.management.base import BaseCommand
 
-
-# логика отправки письма (независимо от дат и всего прочего)
-def send_mail():
-    pass
+from mailing.services import sending_mail
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        pass
+        sending_mail()

@@ -3,16 +3,15 @@ import logging
 from django.conf import settings
 
 from apscheduler.schedulers.blocking import BlockingScheduler
-from apscheduler.triggers.cron import CronTrigger
+from apscheduler.triggers.interval import IntervalTrigger
 from django.core.management.base import BaseCommand
 from django_apscheduler.jobstores import DjangoJobStore
 
-from mailing.management.commands.send_mail import send_mail
+from mailing.services import sending_mail
 
 logger = logging.getLogger(__name__)
 
 
-# логика периодической отправки письма (зависит от дат, меняет статус и тд)
 class Command(BaseCommand):
     help = "Runs APScheduler."
 
@@ -21,9 +20,9 @@ class Command(BaseCommand):
         scheduler.add_jobstore(DjangoJobStore(), "default")
 
         scheduler.add_job(
-            send_mail,
-            trigger=CronTrigger(second="*/10"),  # Every 10 seconds
-            id="send_mail",
+            sending_mail,
+            trigger=IntervalTrigger(minutes=1),
+            id="sending_mail",
             max_instances=1,
             replace_existing=True,
         )
