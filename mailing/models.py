@@ -1,5 +1,5 @@
 from django.db import models
-
+from users.models import User
 
 NULLABLE = {
     "blank": True,
@@ -13,6 +13,7 @@ class Client(models.Model):
     last_name = models.CharField(max_length=150, verbose_name='фамилия')
     patronymic = models.CharField(max_length=150, verbose_name='отчество')
     comment = models.TextField(**NULLABLE, verbose_name='комментарий')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пользователь', **NULLABLE)
 
     class Meta:
         verbose_name = 'клиент'
@@ -25,6 +26,7 @@ class Client(models.Model):
 class Message(models.Model):
     title = models.CharField(max_length=150, verbose_name='тема')
     body = models.TextField(verbose_name='тело сообщения')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пользователь', **NULLABLE)
 
     class Meta:
         verbose_name = 'сообщение'
@@ -45,19 +47,28 @@ class Newsletter(models.Model):
         ('created', 'создана'),
         ('launched', 'запущена'),
         ('completed', 'завершена'),
+        ('cancelled', 'отменена'),
     )
 
     first_sending = models.DateTimeField(verbose_name='первая отправка')
-    last_sending = models.DateTimeField(**NULLABLE, verbose_name='последняя отправка')
+    last_sending = models.DateTimeField(verbose_name='последняя отправка')
     periodicity = models.CharField(max_length=10, choices=PERIODICITY_CHOICES, verbose_name='периодичность')
     status = models.CharField(max_length=9, choices=STATUS_CHOICES, verbose_name='статус')
+    is_active = models.BooleanField(default=True, verbose_name='признак активности')
 
     clients = models.ManyToManyField(Client, verbose_name='клиенты')
     message = models.ForeignKey(Message, on_delete=models.CASCADE, verbose_name='сообщение')
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='пользователь', **NULLABLE)
+
     class Meta:
         verbose_name = 'рассылка'
         verbose_name_plural = 'рассылки'
+
+        permissions = [
+            ('can_read_all_newsletters', 'Может просматривать любые рассылки'),
+            ('can_change_is_active', 'Может отключать рассылку')
+        ]
 
     def __str__(self):
         return f"{self.first_sending} {self.status}"
