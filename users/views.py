@@ -1,13 +1,12 @@
 import secrets
-
 from django.contrib.auth.decorators import permission_required
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from config import settings
-from users.forms import RegistrationForm
+from users.forms import RegistrationForm, ChangeForm
 from users.models import User
 from django.contrib.auth.views import LoginView as BaseLoginView, LogoutView as BaseLogoutView
 
@@ -53,6 +52,21 @@ class LogoutView(BaseLogoutView):
 class UserListView(PermissionRequiredMixin, ListView):
     model = User
     permission_required = 'users.view_user'
+
+
+class UserDetailView(LoginRequiredMixin, DetailView):
+    model = User
+
+
+class UserUpdateView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = ChangeForm
+    success_url = reverse_lazy('users:user_detail')
+
+
+class UserDeleteView(LoginRequiredMixin, DeleteView):
+    model = User
+    success_url = reverse_lazy('mailing:mailing_start')
 
 
 @permission_required('users.can_change_is_active')
