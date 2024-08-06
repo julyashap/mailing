@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'mailing',
+    'users',
+    'blog',
 
     'django_apscheduler',
     'crispy_forms',
@@ -82,9 +84,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Samara'
 
 USE_I18N = True
 
@@ -106,3 +108,26 @@ APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+AUTH_USER_MODEL = 'users.User'
+
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'mailing:mailing_start'
+LOGOUT_REDIRECT_URL = 'mailing:mailing_start'
+
+ENABLE_CACHE = bool(os.getenv('ENABLE_CACHE'))
+
+if ENABLE_CACHE:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": os.getenv('REDIS_LOCATION'),
+        }
+    }
