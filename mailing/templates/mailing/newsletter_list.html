@@ -1,8 +1,10 @@
 {% extends "mailing/base.html" %}
 {% block content %}
+{% if not perms.can_read_all_newsletters %}
 <div class="mb-5 d-flex justify-content-center align-items-center">
     <a class="btn btn-primary" href="{% url 'mailing:create_newsletter' %}">Добавить рассылку</a>
 </div>
+{% endif %}
 <div class="row text-center">
     {% for object in object_list %}
     <div class="col-6">
@@ -30,10 +32,24 @@
                 <div class="btn-group" role="group">
                     <a class="btn btn-outline-primary"
                        href="{% url 'mailing:detail_newsletter' object.pk %}">Посмотреть</a>
+                    {% if not perms.mailing.can_read_all_newsletters %}
                     <a class="btn btn-outline-primary"
                        href="{% url 'mailing:update_newsletter' object.pk %}">Редактировать</a>
-                    <a class="btn btn-outline-primary" href="{% url 'mailing:delete_newsletter' object.pk %}">Удалить</a>
+                    <a class="btn btn-outline-primary"
+                       href="{% url 'mailing:delete_newsletter' object.pk %}">Удалить</a>
+                    {% endif %}
                 </div>
+                {% if object.newsletterlogs.exists %}
+                <a class="btn btn-primary" href="{% url 'mailing:newsletter_log_list' object.pk %}">
+                    Список логов
+                </a>
+                {% endif %}
+                {% if object.is_active and perms.mailing.can_change_is_active %}
+                <a class="btn btn-outline-danger" href="{% url 'mailing:newsletter_block' object.pk %}">Отключить</a>
+                {% endif %}
+                {% if not object.is_active and perms.mailing.can_change_is_active %}
+                <a class="btn btn-outline-primary" href="{% url 'mailing:newsletter_unblock' object.pk %}">Включить</a>
+                {% endif %}
             </div>
         </div>
     </div>

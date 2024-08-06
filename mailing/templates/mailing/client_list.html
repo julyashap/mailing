@@ -1,8 +1,10 @@
 {% extends "mailing/base.html" %}
 {% block content %}
+{% if not perms.can_read_all_newsletters %}
 <div class="mb-5 d-flex justify-content-center align-items-center">
     <a class="btn btn-primary" href="{% url 'mailing:create_client' %}">Добавить клиента</a>
 </div>
+{% endif %}
 <div class="row text-center">
     {% for object in object_list %}
     <div class="col-4">
@@ -15,9 +17,11 @@
                 <h5>{{ object.email }}</h5>
                 <div class="btn-group" role="group">
                     <a class="btn btn-outline-primary" href="{% url 'mailing:detail_client' object.pk %}">Посмотреть</a>
+                    {% if not perms.mailing.can_read_all_newsletters %}
                     <a class="btn btn-outline-primary"
                        href="{% url 'mailing:update_client' object.pk %}">Редактировать</a>
                     <a class="btn btn-outline-primary" href="{% url 'mailing:delete_client' object.pk %}">Удалить</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
